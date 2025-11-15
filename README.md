@@ -2,14 +2,13 @@
 
 This is the working area for the Trust over IP, "Composable Event Streaming Representation (CESR)" specification.
 
-* [Editor's Copy](https://trustoverip.github.io/tswg-cesr-specification/)
+* [Editor's Copy](https://trustoverip.github.io/kswg-cesr-specification/)
 
 #### Contributing
 
-All Trust Over IP Foundation Technical Stack Working Group contributions are done so under the following licenses:
+All Trust Over IP Foundation Technical Stack Working Group contributions are done so under the following rules:
 
-* [Patent and Copyright Grants](Contributing.md)
-* [Source Code](SOURCE_CODE.md)
+* [Contributing](Contributing.md)
 
 #### Licensing
 
@@ -32,5 +31,5 @@ Markdown text and HTML versions of the draft can be built using `Spec-Up-T`.
 
 Command line usage requires that you have the necessary software installed.  See the instructions in the Spec-Up-T [User Guide](https://trustoverip.github.io/spec-up-t-website/docs/getting-started/intro).
 
-More info in [Editting the Spec](/EditingTheSpec).
+More info in [Editing the Spec](EditingTheSpec.md).
 

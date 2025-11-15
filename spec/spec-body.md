@@ -447,7 +447,7 @@ Typically, modern cryptographic suites support limited sets of raw binary Primit
 
 For example, the raw binary Primitives from the well-known [[6](#BOM)] ECC (Elliptic Curve Cryptography) library all satisfy this 128-bit strength goal. In particular, the digital signing public key raw binary Primitives for EdDSA are 256 bits (32 bytes) in length because well-known algorithms can reduce the number of trials to brute force invert an ECC public key to get the private key by the square root of the number of scalar multiplications which is also related to the size of both the private key and public key coordinates (discrete logarithm problem [[5](#Dlog)]). Therefore, 256-bit (32-byte) ECC keys are needed to achieve 128 bits of cryptographic strength. In general, the size of a given raw binary Primitive is typically some multiple of 128 bits of cryptographic strength. This is also true for the associated EdDSA raw binary signatures which are 512 bits (64 bytes) in length.
 
-Similar scale factors exist for cryptographic digests. A standard default Blake3 digest is 256 bits (32 bytes) in length in order to get 128 bits of cryptographic strength. This is also true of SHA3-256. The sweet spots for modern cryptographic raw Primitive lengths are 32 bytes for many digests as well as EdDSA public and private keys as well as ECDSA private keys. Likewise, 64 bytes is the sweet spot for EdDSA and ECDSA-secp256k1 signatures and 64-byte variants of the most popular digests. Therefore, optimized text code tables for these two sweet spots (32 and 64 bytes) would be highly advantageous.
+Similar scale factors exist for cryptographic digests. A standard default [Blake3](#BLAKE3) digest is 256 bits (32 bytes) in length in order to get 128 bits of cryptographic strength. This is also true of SHA3-256. The sweet spots for modern cryptographic raw Primitive lengths are 32 bytes for many digests as well as EdDSA public and private keys as well as ECDSA private keys. Likewise, 64 bytes is the sweet spot for EdDSA and ECDSA-secp256k1 signatures and 64-byte variants of the most popular digests. Therefore, optimized text code tables for these two sweet spots (32 and 64 bytes) would be highly advantageous.
 
 A 32-byte raw binary value has a pad size of 1 character.
 
@@ -940,6 +940,10 @@ A compliant KERI/ACDC genus MUST have the following codes in its Primitive and C
 | `--Z#####` | ESSR (TSP) Payload `version+messagtype+...` up to 1,073,741,823 quadlets/triplets |      8      |       5      |       8      |
 |   `-a##`   | Blinded State quadruples dig+uuid+said+state up to 4,095 quadlets/triplets |      4      |       2      |       4      |
 | `--a#####` | Big Blinded State quadruples dig+uuid+said+state up to 1,073,741,823 quadlets/triplets |      8      |       5      |       8      |
+|   `-b##`   | Bound Blinded State Sextuples blid+uuid+said+state+bsnu+bsaid up to 4,095 quadlets/triplets |      4      |       2      |       4      |
+| `--b#####` | Big Bound Blinded State Sextuples blid+uuid+said+state+bsnu+bsaid up to 1,073,741,823 quadlets/triplets |      8      |       5      |       8      |
+|   `-c##`   | Typed and Blinded IANA media type quadruples blid+uuid+type+media up to 4,095 quadlets/triplets |      4      |       2      |       4      |
+| `--c#####` | Big Typed and Blinded IANA media type quadruples blid+uuid+type+media up to 1,073,741,823 quadlets/triplets |      8      |       5      |       8      |
 |            |  Operation Codes   |             |              |              |
 |   `_`      |      Reserved TBD  |             |              |              |
 |            |  Primitive Matter Codes  |             |              |              |
@@ -969,7 +973,8 @@ A compliant KERI/ACDC genus MUST have the following codes in its Primitive and C
 |     `W`    | Label2 2 bytes for label lead size 0 |      1      |              |      4    |
 |     `X`    | Tag3 3 B64 encoded chars for special values |      1      |       3       |      4    |
 |     `Y`    | Tag7 7 B64 encoded chars for special values  |      1      |        7      |      8   |
-|     `Z`    | Blinding factor 256 bits, Cryptographic strength deterministically generated from random salt |      1      |              |      44 |
+|     `Z`    | Tag11  11 B64 encoded chars for special values |      1      |              |      12 |
+|     `a`    | Blinding factor 256 bits, Cryptographic strength deterministically generated from random salt |      1      |              |      44 |
 | Basic Two Character Codes    |             |              |              |    |
 |    `0A`    | Random salt, seed, nonce, private key, or sequence number of length 128 bits |      2      |              |      24      |
 |    `0B`    | Ed25519 signature                 |      2      |              |      88      |
@@ -1044,12 +1049,6 @@ A compliant KERI/ACDC genus MUST have the following codes in its Primitive and C
 |   `7AAF`   | HPKE Base cipher bytes of QB2 plaintext big lead size 0 |      8      |      4        |            |
 |   `8AAF`   | HPKE Base cipher bytes of QB2 plaintext big lead size 1 |      8      |      4        |            |
 |   `9AAF`   | HPKE Base cipher bytes of QB2 plaintext big lead size 2 |      8      |      4        |            |
-|   `4G`     | HPKE Auth cipher bytes of QB2 plaintext lead size 0 |      4      |      2        |            |
-|   `5G`     | HPKE Auth cipher bytes of QB2 plaintext lead size 1 |      4      |      2        |            |
-|   `6G`     | HPKE Auth cipher bytes of QB2 plaintext lead size 2 |      4      |      2        |            |
-|   `7AAG`   | HPKE Auth cipher bytes of QB2 plaintext big lead size 0 |      8      |      4        |            |
-|   `8AAG`   | HPKE Auth cipher bytes of QB2 plaintext big lead size 1 |      8      |      4        |            |
-|   `9AAG`   | HPKE Auth cipher bytes of QB2 plaintext big lead size 2 |      8      |      4        |            |
 |   `4H`     | Decimal number string lead size 0 |      4      |      2        |            |
 |   `5H`     | Decimal number string lead size 1 |      4      |      2        |            |
 |   `6H`     | Decimal number string lead size 2 |      4      |      2        |            |
@@ -1232,7 +1231,7 @@ Replacing the 44 dummy characters with the SAID of the same length produces the 
 field_0_01234567ENI2bDYghiu1KYYkFrPofH8tJ5tNiNt8WrTIc4s_5IIHfield_2_98765432
 ```
 
-To verify the embedded SAID with respect to its encompassing serialization above, just reverse the generation steps. In other words, replace the SAID in the string with dummy characters of the same length, compute the Blake3 digest as SAID of this dummied version, and then compare the SAIDs.
+To verify the embedded SAID with respect to its encompassing serialization above, just reverse the generation steps. In other words, replace the SAID in the string with dummy characters of the same length, compute the [Blake3](#BLAKE3) digest as SAID of this dummied version, and then compare the SAIDs.
 
 ##### Serialization Generation
 
@@ -1510,7 +1509,7 @@ To elaborate, a post-quantum attack that may practically invert the one-way publ
 
 ### Normative section
 
-<a id="KERI">1</a><a id="ref1"></a>. [KERI specification](https://trustoverip.github.io/tswg-keri-specification/)
+<a id="KERI">1</a><a id="ref1"></a>. [KERI specification](https://trustoverip.github.io/kswg-keri-specification/)
 
 <a id="RFC20">2</a><a id="ref2"></a>. ASCII, RFC20 https://www.rfc-editor.org/rfc/rfc20
 

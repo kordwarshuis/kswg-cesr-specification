@@ -18,7 +18,7 @@ Composable Event Streaming Representation (CESR)
 **Contributors:**
 
 - [Samuel Smith](https://github.com/SmithSamuelM), [Prosapien](https://prosapien.com/)
-- [Philip Feairheller](https://github.com/pfeairheller), [GLEIF](https://gleif.org/)
+- [Philip Feairheller](https://github.com/pfeairheller), [HealthKERI](https://gleif.org/)
 - [Kevin Griffin](https://github.com/m00sey), [GLEIF](https://gleif.org/)
 - [Nuttawut Kongsuwan](https://github.com/nkongsuwan)
 - [Trent Larson](https://github.com/trentlarson)

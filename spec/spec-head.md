@@ -1,15 +1,16 @@
 Composable Event Streaming Representation (CESR)
 ================================================
 
-**Specification Status**: v1.0
+**Specification Status**: v1.1 Draft
 
 **Latest Draft:**
 
 [https://github.com/trustoverip/kswg-cesr-specification](https://github.com/trustoverip/kswg-cesr-specification)
 
-**Author:**
+**Authors:**
 
 - [Samuel Smith](https://github.com/SmithSamuelM), [Prosapien](https://prosapien.com/)
+- [Philip Feairheller](https://github.com/pfeairheller), [HealthKERI](https://gleif.org/)
 
 **Editors:**
 
@@ -17,6 +18,13 @@ Composable Event Streaming Representation (CESR)
 
 **Contributors:**
 
+- [Samuel Smith](https://github.com/SmithSamuelM), [Prosapien](https://prosapien.com/)
+- [Philip Feairheller](https://github.com/pfeairheller), [HealthKERI](https://gleif.org/)
+- [Kevin Griffin](https://github.com/m00sey), [GLEIF](https://gleif.org/)
+- [Nuttawut Kongsuwan](https://github.com/nkongsuwan)
+- [Trent Larson](https://github.com/trentlarson)
+- [Kent Bull](https://github.com/kentbull)
+- [Charles Lanahan](https://github.com/daidoji)
 - [Henk van Cann](https://github.com/henkvancann), [Blockchainbird](https://blockchainbird.org/)
 - [Kor Dwarshuis](https://github.com/kordwarshuis), [Blockchainbird](https://blockchainbird.org/)
 

@@ -7,9 +7,10 @@ Composable Event Streaming Representation (CESR)
 
 [https://github.com/trustoverip/kswg-cesr-specification](https://github.com/trustoverip/kswg-cesr-specification)
 
-**Author:**
+**Authors:**
 
 - [Samuel Smith](https://github.com/SmithSamuelM), [Prosapien](https://prosapien.com/)
+- [Philip Feairheller](https://github.com/pfeairheller), [HealthKERI](https://gleif.org/)
 
 **Editors:**
 

@@ -5,7 +5,7 @@ Composable Event Streaming Representation (CESR)
 
 **DOI**
 
-[https://doi.org/10.5281/zenodo.18879946](https://doi.org/10.5281/zenodo.18879946)
+[https://doi.org/10.5281/zenodo.18879945](https://doi.org/10.5281/zenodo.18879945)
 
 **Latest Draft:**
 

@@ -1562,4 +1562,4 @@ To elaborate, a post-quantum attack that may practically invert the one-way publ
 
 <a id="PQCollisonCost">18</a><a id="ref18"></a>. Cost analysis of hash collisions: Will quantum computers make SHARCS obsolete?, D.J. Berstein, https://cr.yp.to/hash/collisioncost-20090517.pdf
 
-
+Test 2026-03-18 12:30:50 by Kor Dwarshuis
